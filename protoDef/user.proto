@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message User {
+  string userId = 1;
+  string userName = 2;
+  string password = 3;
+}
+
+message Users { repeated User users = 1; }
+
+message CreateUser {
+  string userName = 1;
+  string password = 2;
+}
+
+message Empty {}
+
+service UserService {
+  rpc GetUsers(Empty) returns (Users) {}
+  rpc RegisterUser(CreateUser) returns (User) {}
+}
